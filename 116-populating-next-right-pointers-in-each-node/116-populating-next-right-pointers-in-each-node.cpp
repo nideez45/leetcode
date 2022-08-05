@@ -19,35 +19,24 @@ public:
 class Solution {
 public:
     
-    // can use level order traversal
+    // constant space
+    // we only need start node of each level if we have already populated the next
+    // right pointers in that level
+    // node->left->next = node->right
+    // if node->next != NULL , node->right->next = node->next=>left
     
     Node* connect(Node* root) {
-        // edge case
-        if(root == NULL) return root;
-        queue<Node*> q;
-        q.push(root);
-        while(!q.empty()){
-            
-            // processing current level
-            int sz = q.size();
-            vector<Node*> v;
-            for(int i=0;i<sz;i++){
-                v.push_back(q.front());
-                q.pop();
-            }
-            // populating next pointers
-            for(int i=1;i<sz;i++){
-                v[i-1]->next = v[i];
-            }
-            v[sz-1]->next = NULL;
-            
-            // adding next level
-            for(int i=0;i<sz;i++){
-                if(v[i]->left != NULL){
-                    q.push(v[i]->left);
-                }
-                if(v[i]->right != NULL){
-                    q.push(v[i]->right);
+        Node* temp = root;
+        while(temp != NULL){
+            Node* start = temp;
+            temp = start->left;
+            if(temp!=NULL){
+                while(start != NULL){
+                    start->left->next = start->right;
+                    if(start->next != NULL){
+                        start->right->next = start->next->left;
+                    }
+                    start = start->next;
                 }
             }
         }
