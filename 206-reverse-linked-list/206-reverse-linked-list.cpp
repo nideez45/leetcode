@@ -10,18 +10,23 @@
  */
 class Solution {
 public:
-    // iterative
-    ListNode* reverseList(ListNode* head) {
-        // base case
-        if(head == NULL) return head;
-        ListNode* prev = NULL;
-        ListNode* cur = head;
-        while(cur!=NULL){
-            ListNode* temp = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = temp;
+    // Recursive
+    ListNode* new_head = NULL;
+    void rev(ListNode* node){
+        if(node->next == NULL){
+            new_head = node;
+            return;
         }
-        return prev;
+        rev(node->next);
+        node->next->next = node;
+        node->next = NULL;
+    }
+    
+    
+    ListNode* reverseList(ListNode* head) {
+        // edge case
+        if(head == NULL) return NULL;
+        rev(head);
+        return new_head;
     }
 };
