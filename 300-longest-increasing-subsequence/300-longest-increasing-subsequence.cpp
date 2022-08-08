@@ -1,21 +1,21 @@
 class Solution {
 public:
     
-    // dynamic programming
-    // iterative code
-    // Time - O(n^2) Space - O(n)
-    // dp[i] -> length of lis ending at index i
+    // Time O(nlogn) and Space O(n)
+    
     
     int lengthOfLIS(vector<int>& nums) {
+        vector<int> temp;
         int n = nums.size();
-        int dp[n];
-        for(int i=0;i<n;i++) dp[i] = 1;
-        for(int i=1;i<n;i++){
-            for(int j=i-1;j>=0;j--){
-                if(nums[i]>nums[j]) dp[i] = max(dp[i],1+dp[j]);
+        for(int i=0;i<n;i++){
+            if(temp.empty() || nums[i]>temp.back()){
+                temp.push_back(nums[i]);
+            }
+            else{
+                auto it = lower_bound(temp.begin(),temp.end(),nums[i]);
+                *it = nums[i];
             }
         }
-        int x = *max_element(dp,dp+n);
-        return x;
+        return temp.size();
     }
 };
