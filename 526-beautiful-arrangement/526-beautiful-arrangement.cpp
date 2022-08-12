@@ -1,13 +1,13 @@
 class Solution {
 public:
-    int dp[15][1<<15];
+    int dp[1<<15];
     int n;
     
     int rec(int level,int mask){
         if(level == n){
             return 1;
         }
-        if(dp[level][mask] != -1) return dp[level][mask];
+        if(dp[mask] != -1) return dp[mask];
         
         int ans = 0;
         for(int i=0;i<n;i++){
@@ -18,7 +18,7 @@ public:
                 }
             }
         }
-        return dp[level][mask] = ans;
+        return dp[mask] = ans;
     }
     
     int countArrangement(int _n) {
