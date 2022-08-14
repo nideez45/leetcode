@@ -1,11 +1,11 @@
 class Solution {
 public:
     
-    vector<int> g[100000];
+    vector<int> g[50005];
     unordered_map<string,int> mp;
     
     const int inf = 1e9;
-    int dist[100000];
+    int dist[50005];
     int n;
     bool check(string &s,string &t){
         int cnt = 0;
