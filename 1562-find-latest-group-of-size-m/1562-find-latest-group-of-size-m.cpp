@@ -27,8 +27,8 @@ public:
         if(a == b) return;
         int x = sz[a];
         int y = sz[b];
-        if(st.find(x) != st.end())st.erase(st.find(x));
-        if(st.find(y) != st.end())st.erase(st.find(y));
+        st.erase(st.find(x));
+        st.erase(st.find(y));
         st.insert(x+y);
         if(sz[a]>sz[b]) swap(a,b);
         sz[b]+=sz[a];
