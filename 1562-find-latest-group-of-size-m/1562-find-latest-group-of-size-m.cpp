@@ -40,7 +40,10 @@ public:
         m = _m;
         int n = arr.size();
         for(i=0;i<n;i++){
-            makeset(arr[i]);
+            //makeset(arr[i]);
+             parent[arr[i]] = arr[i];
+        sz[arr[i]] = 1;
+        st.insert(1);
             if(arr[i]!=1){
                if(sz[arr[i]-1]!=0) Union(arr[i],arr[i]-1);   
             }
