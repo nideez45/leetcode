@@ -1,28 +1,29 @@
 
-
-int dp[1<<15];
-    int n;
+int cnt[16];
+int ans;
+int n;
+void rec(int level){
+    if(level == n){
+        ans++;
+        return;
+    }
     
-    int rec(int level,int mask){
-        if(level == n){
-            return 1;
-        }
-        if(dp[mask] != -1) return dp[mask];
-        
-        int ans = 0;
-        for(int i=0;i<n;i++){
-            if(!(mask&(1<<i))){
-                if((level+1)%(i+1) == 0 || (i+1)%(level+1) == 0){
-                    int temp_mask = mask^(1<<i);
-                    ans+=rec(level+1,temp_mask);
-                }
+    for(int i=1;i<=n;i++){
+        if(cnt[i]){
+            int idx = level+1;
+            if(idx%i == 0 || i%idx == 0){
+                cnt[i]--;
+                rec(level+1);
+                cnt[i]++;
             }
         }
-        return dp[mask] = ans;
     }
-    
-    int countArrangement(int _n) {
-        n = _n;
-        memset(dp,-1,sizeof(dp));    
-        return rec(0,0);
-    }
+}
+
+int countArrangement(int _n){
+    n = _n;
+    ans = 0;
+    for(int i=1;i<=n;i++) cnt[i] = 1;
+    rec(0);
+    return ans;
+}
