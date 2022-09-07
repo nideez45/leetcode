@@ -17,8 +17,8 @@ public:
         swap(a[rank],a[l]);
         int i=l;
         int j = rank+1;
-        while(i<rank+l && j<=r){
-            while(i<rank+l && a[i]<pivot) i++;
+        while(i<rank && j<=r){
+            while(i<rank && a[i]<pivot) i++;
             while(j<=r && a[j]>=pivot) j++;
             if(i<rank && j<=r){
                 swap(a[i],a[j]);
