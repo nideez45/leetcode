@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        unordered_map<string,int> mp;
+        map<string,int> mp;
         for(auto w:wordDict){
             mp[w]++;
         }
