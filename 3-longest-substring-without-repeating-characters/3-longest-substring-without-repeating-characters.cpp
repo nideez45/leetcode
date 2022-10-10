@@ -13,14 +13,8 @@ public:
             }
             // tail ... head
             ans = max(ans,r-l+1);
-            if(r>=l){
-                mp.erase(s[l]);
-                l++;
-            }
-            else{
-                l++;
-                r = l-1;
-            }
+            mp.erase(s[l]);
+            l++;
         }
         return ans;
     }
