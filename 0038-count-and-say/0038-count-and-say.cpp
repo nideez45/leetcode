@@ -5,6 +5,12 @@ public:
         if(n == 1){
             return "1";
         }
+        if(n == 2){
+            return "11";
+        }
+        if(n == 3){
+            return "21";
+        }
         string temp = rec(n-1);
         string ans;
         int i=0;
