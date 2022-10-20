@@ -2,7 +2,7 @@ class Solution {
 public:
     
     vector<int> nums = {1,5,10,50,100,500,1000};
-    map<int,char> mp;
+    unordered_map<int,char> mp;
     
     string find(int num){
         if(num == 0){
