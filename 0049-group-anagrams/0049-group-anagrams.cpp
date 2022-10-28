@@ -3,7 +3,7 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         vector<pair<string,string>> v;
        
-        for(string val:strs){
+        for(string &val:strs){
             string s = val;
             sort(s.begin(),s.end());
             v.push_back({s,val});
