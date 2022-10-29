@@ -13,7 +13,7 @@ public:
         int pref = 0;
         for(int i=0;i<n;i++){
             pref+=arr[i]%2;
-            if(pref%2 == 0){
+            if((pref&1) == 0){
                 ans += oc;
                 ans%=mod;
                 ec++;
