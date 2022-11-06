@@ -41,7 +41,7 @@ public:
     }
     
     vector<int> sumPrefixScores(vector<string>& words) {
-        for(auto w:words) insert(w);
+        for(auto &w:words) insert(w);
         vector<int> ans;
         int n = words.size();
         ans.assign(n,0);
