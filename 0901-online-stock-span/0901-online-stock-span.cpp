@@ -18,20 +18,22 @@ public:
             while(!st.empty() && st.top().first<=price){
                 st.pop();
             }
+            int idx;
+            if(!st.empty()){
+                idx = st.top().second;
+            }
             days++;
-            int ans;
-            if(st.size() == 0){
-                ans = days;
-            }
-            else{
-                ans = days-st.top().second;
-            }
             st.push({price,days});
-            return ans;
+            if(st.size() == 1) return days;
+            else if(st.size() == sz+1) return 1;
+            else{
+                return days-idx;
+            }
         }
         return 0;
     }
 };
+
 /**
  * Your StockSpanner object will be instantiated and called as such:
  * StockSpanner* obj = new StockSpanner();
