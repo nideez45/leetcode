@@ -13,13 +13,11 @@ public:
     
     long long countExcellentPairs(vector<int>& nums, int k) {
         set<int>st;
-        for(auto val:nums) st.insert(val);
+        for(auto &val:nums) st.insert(val);
         vector<int> v;
-        map<int,int> mp;
-        for(auto val:nums) mp[val]++;
-        for(auto val:st) v.push_back(val);
+        for(auto &val:st) v.push_back(val);
         vector<int> x;
-        for(auto val:v){
+        for(auto &val:v){
             x.push_back(bc(val));
         }
         sort(x.begin(),x.end());
@@ -34,7 +32,7 @@ public:
         }
         ans*=2LL;
         // handles the cases where same element forms pair
-        for(auto val:x){
+        for(auto &val:x){
             if(2*val>=k) ans++;
         }
         
