@@ -31,9 +31,6 @@ public:
                 st.push({strength[i],i});
             }
         }
-        // for(auto val:next_smaller) cout<<val<<" ";
-        // cout<<'\n';
-        // for(auto val:prev_smaller) cout<<val<<" ";
         long long pref[n];
         pref[0] = 1LL*strength[0]%mod;;
         for(int i=1;i<n;i++){
@@ -50,7 +47,6 @@ public:
         for(int i=0;i<n;i++){
             int j = prev_smaller[i];
             int k = next_smaller[i];
-           // cout<<j<<" "<<k<<'\n';
             long long term1 = 0;
             if(k-1>=0) {
                 term1+= ppref[k-1];
@@ -82,7 +78,6 @@ public:
             term3%=mod;
             ans+=term3;
             ans%=mod;
-           // if(i == 1) cout<<term1<<" "<<term2<<" "<<term3<<'\n';
         }
         return ans;
     }
