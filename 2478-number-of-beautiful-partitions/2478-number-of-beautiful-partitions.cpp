@@ -22,6 +22,7 @@ public:
         int idx = lower_bound(v.begin(),v.end(),level)-v.begin();
         for(int i=idx;i<v.size();i++){
             // level to v[idx]
+            if(v.size()-i<left) break;
             if(v[i]-level+1<m) continue;
             ans+=rec(v[i]+1,left-1);
             ans%=mod;
